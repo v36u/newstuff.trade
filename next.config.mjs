@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -9,6 +10,10 @@ const nextConfig = {
     ],
   },
   trailingSlash: true,
+  webpack: (config) => {
+    config.externals.push("pino-pretty");
+    return config;
+  },
 };
 
 export default nextConfig;

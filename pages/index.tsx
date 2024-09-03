@@ -1,7 +1,8 @@
+import { NextPage } from "next";
 import prisma from "@/prisma/db";
 import Image from "next/image";
 
-export default async function Home() {
+const Home: NextPage = async () => {
   const prismaTest = await prisma.listing.findMany();
 
   return (
@@ -22,4 +23,6 @@ export default async function Home() {
       })}
     </div>
   );
-}
+};
+
+export default Home;
