@@ -1,13 +1,17 @@
 import { NextPage } from "next";
-import prisma from "@/prisma/db";
+import prisma from "~/prisma/db";
 import Image from "next/image";
+import { trpc } from "~/utils/trpc";
 
-const Home: NextPage = async () => {
-  const prismaTest = await prisma.listing.findMany();
+const Home: NextPage = () => {
+  const allListings = trpc.getAllListings.useQuery();
+  if (!allListings.data) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
-      {prismaTest.map((listing) => {
+      {allListings.data.map((listing) => {
         return (
           <div key={listing.id}>
             <Image

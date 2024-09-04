@@ -16,8 +16,9 @@ import {
   WalletDisconnectButton,
   WalletMultiButton,
 } from "@solana/wallet-adapter-react-ui";
-import { AppProps } from "next/app";
-import { cn } from "@/lib/utils";
+import { AppType } from "next/app";
+import { cn } from "~/utils/shadcn";
+import { trpc } from "~/utils/trpc";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 
 const solanaNetwork = WalletAdapterNetwork.Devnet;
 
-export default function App({ Component, pageProps }: AppProps) {
+const App: AppType = ({ Component, pageProps }) => {
   const endpoint = useMemo(() => clusterApiUrl(solanaNetwork), []);
 
   const wallets = useMemo(() => [new PhantomWalletAdapter()], []);
@@ -82,4 +83,8 @@ export default function App({ Component, pageProps }: AppProps) {
       </WalletProvider>
     </ConnectionProvider>
   );
-}
+};
+
+const appWithTRPC = trpc.withTRPC(App);
+
+export default appWithTRPC;
