@@ -49,25 +49,7 @@ const App: AppType = ({ Component, pageProps }) => {
                   href="/overview"
                   className="text-sm font-medium text-gray-400 transition-colors hover:text-gray-700"
                 >
-                  Overview
-                </Link>
-                <Link
-                  href="/customers"
-                  className="text-sm font-medium text-gray-400 transition-colors hover:text-gray-700"
-                >
-                  Customers
-                </Link>
-                <Link
-                  href="/products"
-                  className="text-sm font-medium text-gray-400 transition-colors hover:text-gray-700"
-                >
-                  Products
-                </Link>
-                <Link
-                  href="/settings"
-                  className="text-sm font-medium text-gray-400 transition-colors hover:text-gray-700"
-                >
-                  Settings
+                  Home
                 </Link>
               </nav>
               <div className="ml-auto flex items-center space-x-4">
